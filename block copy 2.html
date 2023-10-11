@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .text-to-canvas h1,
+        .text-to-canvas h2,
+        .text-to-canvas h3 {
+            margin: auto;
+            margin-bottom: -3.8rem;
+            font-size: 1rem;
+            line-height: 16px;
+            color: #569CD6;
+            display: flex;
+            flex-direction: row;
+            z-index: 3;
+            pointer-events: none;
+            -webkit-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .text-to-canvas h1 span,
+        .text-to-canvas h2 span,
+        .text-to-canvas h3 span {
+            text-align: center;
+            top: 0;
+            width: 120px;
+            height: 16px;
+            position: absolute;
+            display: block;
+        }
+        .text-to-canvas h1 span:first-child,
+        .text-to-canvas h2 span:first-child,
+        .text-to-canvas h3 span:first-child{
+            color: #f17c2e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-to-canvas">
+        <h2>
+            <span>網頁前端技術</span>
+            <span>HTML5</span>
+            <span>CSS/SASS</span>
+            <span>JavaScript</span>
+            <span>three.js</span>
+            <span>Vue.js 框架</span>
+            <span>AJAX</span>
+        </h2>
+        <h1>
+            <span>程式設計與資料庫</span>
+            <span>PHP</span>
+            <span>My SQL</span>
+            <span>敏捷式開發</span>
+            <span>Git 版本控制</span>
+        </h1>
+        <h3>
+            <span>介面設計</span>
+            <span>UI/UX設計</span>
+            <span>Figma</span>
+
+        </h3>
+    </div>
+    <script type="module">
+        import { default as Matter } from 'https://cdn.skypack.dev/matter-js@0.17.1?min';
+
+        var Engine = Matter.Engine,
+            Render = Matter.Render,
+            Runner = Matter.Runner,
+            MouseConstraint = Matter.MouseConstraint,
+            Mouse = Matter.Mouse,
+            World = Matter.World,
+            Bodies = Matter.Bodies,
+            Composites = Matter.Composites;
+
+        var engine = Engine.create(),
+            world = engine.world;
+
+        var render = Render.create({
+            element: document.body,
+            engine: engine,
+        });
+
+        Render.run(render);
+
+        var runner = Runner.create();
+        Runner.run(runner, engine);
+
+        World.add(world, [Bodies.rectangle(300, 50, 500, 40, { isStatic: true })]);
+        World.add(world, [Bodies.rectangle(300, 500, 500, 40.5, { isStatic: true })]);
+        World.add(world, [Bodies.rectangle(500, 200, 40, 500, { isStatic: true })]);
+        World.add(world, [Bodies.rectangle(0, 200, 40, 500, { isStatic: true })]);
+        engine.gravity.y = -1;
+
+        let bodies = [];
+        let bodies2 = [];
+        let bodies3 = [];
+
+        let categories = {
+            catMouse: 0x0002,
+            catBody: 0x0004
+        };
+        // LETTRES ENSEMBLE
+        const head2 = document.querySelector(".text-to-canvas h2");
+        let letters2 = head2.querySelectorAll("span");
+        var stack1 = Composites.stack(100, 606 - 25.25 - 5 * 40, 1, 1, 0, 0,
+            function (x, y) {
+                for (let i = 0; i < letters2.length; i++) {
+                    bodies2.push(
+                        Bodies.rectangle(
+                            120,
+                            120 + (70 * i),
+                            letters2[i].offsetWidth+40,
+                            40,
+                        )
+                    );
+                }
+            });
+
+
+        const head = document.querySelector(".text-to-canvas h1");
+        let letters = head.querySelectorAll("span");
+        var stack2 = Composites.stack(100, 606 - 25.25 - 5 * 40, 1, 1, 0, 0,
+            function (x, y) {
+
+                for (let i = 0; i < letters.length; i++) {
+                    bodies.push(
+                        Bodies.rectangle(
+                            310,
+                            120 + (70 * i),
+                            letters[i].offsetWidth + 60,
+                            40,
+                        )
+
+                    );
+                }
+            });
+
+        const head3 = document.querySelector(".text-to-canvas h3");
+        let letters3 = head3.querySelectorAll("span");
+        var stack3 = Composites.stack(100, 606 - 25.25 - 5 * 40, 1, 1, 0, 0,
+            function (x, y) {
+
+                for (let i = 0; i < letters3.length; i++) {
+                    bodies3.push(
+                        Bodies.rectangle(
+                            520,
+                            120 + (80 * i),
+                            letters3[i].offsetWidth + 60,
+                            40,
+                        )
+
+                    );
+                }
+            });
+        World.add(world, bodies);
+        World.add(world, bodies2);
+        World.add(world, bodies3);
+
+
+        var mouse = Mouse.create(render.canvas),
+            mouseConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 1,
+                    render: {
+                        visible: false
+                    }
+                }
+            });
+
+        World.add(world, mouseConstraint);
+
+        render.mouse = mouse;
+
+        function updatePosition() {
+            requestAnimationFrame(updatePosition);
+
+            for (var i = 0; i < letters.length; i++) {
+                letters[i].style.left =
+                    bodies[i].position.x - letters[i].offsetWidth * 0.5 + "px";
+                letters[i].style.top =
+                    bodies[i].position.y - letters[i].offsetWidth * 0.5 + "px";
+
+
+                letters[i].style.transform = "rotate(" + bodies[i].angle + "rad)";
+            }
+
+            for (var j = 0; j < letters2.length; j++) {
+                letters2[j].style.left =
+                    bodies2[j].position.x - letters2[j].offsetWidth * 0.5 + "px";
+                letters2[j].style.top =
+                    bodies2[j].position.y - letters2[j].offsetWidth * 0.5 + "px";
+                letters2[j].style.transform = "rotate(" + bodies2[j].angle + "rad)";
+            }
+            for (var k = 0; k < letters3.length; k++) {
+                letters3[k].style.left =
+                    bodies3[k].position.x - letters3[k].offsetWidth * 0.5 + "px";
+                letters3[k].style.top =
+                    bodies3[k].position.y - letters3[k].offsetWidth * 0.5 + "px";
+                letters3[k].style.transform = "rotate(" + bodies3[k].angle + "rad)";
+            }
+        }
+        updatePosition();
+    </script>
+</body>
+
+</html>
