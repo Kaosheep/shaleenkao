@@ -1,0 +1,15 @@
+@mixin tc() {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin opbg() {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .7) 20%, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(10px);
+}
+@mixin fc() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -2,10 +2,14 @@ import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 import gsap from 'https://cdn.skypack.dev/gsap';
+import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, 600 / 500, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth*0.9 / window.innerHeight, 0.1, 1000);
 
 let mouseX = window.innerWidth / 100;
 let mouseY = window.innerHeight / 100;
@@ -22,14 +26,16 @@ loader.load(
     object = gltf.scene;
     scene.add(object);
 
-    object.position.y = -0.3;
+    object.position.y = -1;
+    object.translateX(3.5);
+    object.position.z = -1.5;
     mixer = new THREE.AnimationMixer(object);
     const clips = gltf.animations;
     clips.forEach(function (clip) {
       const action = mixer.clipAction(clip);
       action.play();
     })
-    console.log(object)
+
   },
   function (xhr) {
     console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -41,35 +47,21 @@ loader.load(
 );
 
 const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(600, 500);
+renderer.setSize(window.innerWidth*0.9, window.innerHeight);
 
 renderer.setClearColor(0xffffff, 0);
+let box = document.getElementById("container3D");
+box.appendChild(renderer.domElement);
 
-document.getElementById("container3D").appendChild(renderer.domElement);
-
-camera.position.set(2, 1, 4);
+camera.position.set(5, 1, 5.5);
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-// let zoom = true;
-// document.getElementById('btn').addEventListener('click',()=>{
-//   gsap.to(camera.position,{
-//       duration:1,
-//       z : zoom? 20:4,
-//       onUpdate: function() {
-//                 camera.lookAt( 0,1,1);
-//             },
-//   })
-
-//   document.getElementById('btn').innerHTML = zoom?"zoomin" : "zoomout"
-//   zoom = !zoom
-// })
-
 const topLight = new THREE.DirectionalLight(0xffffff, 0.5);
-topLight.position.set(500, 500, 500)
+topLight.position.set(1200, 500, 500)
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff,1.2);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
 scene.add(ambientLight);
 
 const clock = new THREE.Clock();
@@ -81,8 +73,8 @@ function animate() {
   if (object) {
     gsap.to(object.rotation, {
       duration: 1,
-      y : mouseX / 3000,
-      x : mouseY / 5000,
+      y: mouseX / 2800,
+      x: mouseY / 4000,
     })
 
   }
@@ -95,9 +87,9 @@ function animate() {
 renderer.setAnimationLoop(animate);
 
 window.addEventListener("resize", function () {
-  camera.aspect = 600 / 500;
+  camera.aspect = window.innerWidth*0.9 / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(600, 500);
+  renderer.setSize(window.innerWidth*0.9, window.innerHeight);
 });
 
 document.onmousemove = (e) => {
@@ -106,4 +98,40 @@ document.onmousemove = (e) => {
 }
 
 animate();
+
+let sectionh = document.querySelector('section').offsetHeight;
+// let tl = gsap.timeline({
+  
+//   scrollTrigger: {
+//     markers: true,
+//     scrub: true,
+//     start: '0 top',
+//     end: `+=${sectionh * 1.6} top`,
+//     toggleActions: "restart pause pause pause",
+//     onUpdate: function (self) {
+//       scene.rotation.y = -1 *Math.sin(Math.PI * 1.3 *self.progress);
+//       scene.position.z = -1 * Math.sin(Math.PI * 1 *self.progress) + 7.5 *self.progress;
+//       scene.position.x = -7.5 *self.progress;
+//     }
+//   }
+// });
+
+// let tl2 = gsap.timeline({
+//   scrollTrigger: {
+//     markers: true,
+//     scrub: true,
+//     start: `+=${sectionh * 2} top`,
+//     end: 'bottom bottom',
+//     onUpdate: function (self) {
+//       camera.position.y = -20 * self.progress;
+//     }
+//   }
+// });
+
+
+
+
+
+
+
 
