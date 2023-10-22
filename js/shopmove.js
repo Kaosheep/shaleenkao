@@ -6,10 +6,10 @@ import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-
+const box = document.getElementById("container3D");
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth*0.9 / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, box.offsetWidth / box.offsetHeight, 0.1, 1000);
 
 let mouseX = window.innerWidth / 100;
 let mouseY = window.innerHeight / 100;
@@ -26,9 +26,13 @@ loader.load(
     object = gltf.scene;
     scene.add(object);
 
-    object.position.y = -1;
-    object.translateX(3.5);
-    object.position.z = -1.5;
+    object.position.y = 0;
+    object.translateX(0);
+    object.translateY(-1.5);
+
+    object.position.z = 0;
+    object.scale.set(1.8, 1.8, 1.8);
+    
     mixer = new THREE.AnimationMixer(object);
     const clips = gltf.animations;
     clips.forEach(function (clip) {
@@ -47,10 +51,10 @@ loader.load(
 );
 
 const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth*0.9, window.innerHeight);
+renderer.setSize(box.offsetWidth, box.offsetHeight);
 
 renderer.setClearColor(0xffffff, 0);
-let box = document.getElementById("container3D");
+
 box.appendChild(renderer.domElement);
 
 camera.position.set(5, 1, 5.5);
@@ -87,9 +91,9 @@ function animate() {
 renderer.setAnimationLoop(animate);
 
 window.addEventListener("resize", function () {
-  camera.aspect = window.innerWidth*0.9 / window.innerHeight;
+  camera.aspect = box.offsetWidth / box.offsetHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth*0.9, window.innerHeight);
+  renderer.setSize(box.offsetWidth, box.offsetHeight);
 });
 
 document.onmousemove = (e) => {

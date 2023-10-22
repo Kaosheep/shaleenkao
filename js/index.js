@@ -9,8 +9,10 @@ let current = 0;
 let target = 0;
 let ease = .05;
 let sliderh = document.querySelector('.sliderinn').getBoundingClientRect().height;
+
 let textcanvas = document.querySelector('.skillblock');
-window.addEventListener('resize',init());
+
+window.addEventListener('resize', init);
 
 function lerp(start, end, t) {
     return start * (1 - t) + end * t;
@@ -26,36 +28,18 @@ function animate() {
     target = window.scrollY;
     setTransform(slider, `translateY(-${current}px)`);
     requestAnimationFrame(animate);
+
 }
 
 init();
 animate();
-// 作品集
-let cardinfos = document.querySelectorAll('.cardinfo');
-let isshow = true;
-document.getElementById('next').onclick = function(){
-    let lists = document.querySelectorAll('.card');
-    document.querySelector('.procontainer').appendChild(lists[0]);
-    if(isshow){
-        cardinfos[0].style.display=`none`;
-        cardinfos[1].style.display=`block`;
-        return isshow = !isshow ;
-    }else{
-        cardinfos[0].style.display=`block`;
-        cardinfos[1].style.display=`none`;
-        return isshow = !isshow ;
+
+const nav = document.querySelector('nav');
+document.addEventListener("wheel", function (e) {
+    if (e.deltaY < 0 ) {
+        console.log()
+        nav.style.top = `0%`
+    } else {
+        nav.style.top = `-100%`
     }
-}
-document.getElementById('back').onclick = function(){
-    let lists = document.querySelectorAll('.card');
-    document.querySelector('.procontainer').prepend(lists[lists.length-1]);
-    if(isshow){
-        cardinfos[0].style.display=`none`;
-        cardinfos[1].style.display=`block`;
-        return isshow = !isshow ;
-    }else{
-        cardinfos[0].style.display=`block`;
-        cardinfos[1].style.display=`none`;
-        return isshow = !isshow ;
-    }
-}
+});

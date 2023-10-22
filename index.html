@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -16,39 +16,68 @@
             <span></span>
         </div> -->
     </div>
-
+    <nav>
+        <div class="conicon">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=littlekaotw@gmail.com"
+                target="_blank">
+                <p><i class="fa-solid fa-square-envelope"></i>littlekaotw@gmail.com</p>
+            </a>
+            <a href="https://github.com/Kaosheep" target="_blank">
+                <p><i class="fa-brands fa-square-github"></i>Kaosheep</p>
+            </a>
+            <a href="https://drive.google.com/file/d/10wlul1vkPauLtxryFY5ALLFZ_BgKe0Js/view?usp=share_link" target="_blank">
+                <p><i class="fa-solid fa-file-lines"></i>簡歷</p>
+            </a>
+        </div>
+    </nav>
 
     <main>
         <div class="slider">
             <div class="sliderinn">
                 <section class="intro">
-                    <div class="block">
-                        <div class="self">
-                            <h1>高暄雅<br>Frontend Engineer</h1>
-                            <img src="image/01.png" alt="">
-                            <p>曾經在醫院擔任醫事檢驗師，培養細心與耐心的工作習慣。<br>過往的經驗和學習能力能夠運用到前端工程師的領域，為新的挑戰和機會而努力。</p>
-                        </div>
+                    <div class="top">
+                        <div class="introinfo">
+                            <div class="block" data-tilt data-tilt-glare="true" data-tilt-max="5">
+                                <div class="head">
+                                    <div class="img">
+                                        <img src="image/head.png" alt="">
+                                    </div>
 
-                        <div class="conicon">
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=littlekaotw@gmail.com"
-                                target="_blank">
-                                <p><i class="fa-solid fa-square-envelope"></i>littlekaotw@gmail.com</p>
-                            </a>
-                            <a href="https://github.com/Kaosheep">
-                                <p><i class="fa-brands fa-square-github"></i>Kaosheep</p>
-                            </a>
-                        </div>
+                                </div>
+                                <div class="self">
 
+                                    <h1>高暄雅<br>Shaleen Kao</h1>
+
+                                    <p>曾經在醫院擔任醫事檢驗師，培養細心與耐心的工作習慣。<br>過往的經驗和學習能力能夠運用到前端工程師的領域，為新的挑戰和機會而努力。</p>
+                                    <div class="conicon">
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=littlekaotw@gmail.com"
+                                            target="_blank">
+                                            <p><i class="fa-solid fa-square-envelope"></i>littlekaotw@gmail.com</p>
+                                        </a>
+                                        <a href="https://github.com/Kaosheep" target="_blank">
+                                            <p><i class="fa-brands fa-square-github"></i>Kaosheep</p>
+                                        </a>
+                                        <a href="https://drive.google.com/file/d/10wlul1vkPauLtxryFY5ALLFZ_BgKe0Js/view?usp=share_link" target="_blank">
+                                            <p><i class="fa-solid fa-file-lines"></i>簡歷</p>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div id="container3D"></div>
                     </div>
-                    <div id="container3D"></div>
-                </section>
-                <section class="person">
                     <div class="edu">
                         <h2>專業訓練</h2>
                         <p>緯育TibaMe 前端工程師專業技術養成班 | 第86期 2023/6~2023/10・ 500小時訓練</p>
                         <h2>學歷</h2>
                         <p>長庚大學 醫學生物技術暨檢驗學系 | 2013 - 2017</p>
                     </div>
+                </section>
+                <section class="person">
+
                     <h2 class="subtitle">個人專長<br>Personality&Skill</h2>
                     <div class="container">
                         <div class="skillblock">
@@ -119,81 +148,137 @@
                         <h2 class="subtitle">作品集<br>Portfolio</h2>
                         <div class="file">
                             <div class="showcase">
+
                                 <button><span><img src="image/sheeplogo.png" alt=""></span></button>
                                 <button><span><img src="image/museslogo.png" alt=""></span></button>
                             </div>
                             <div class="txtcontainer">
-                                <div class="btn">
-                                    <button id="back">
-                                        <i class="fa-solid fa-arrow-left"></i></button>
-                                    <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
+
+                                <div class="cardinfo">
+                                    <div class="cardimg">
+                                        <span><i class="fa-solid fa-crown"></i> 最佳網頁</span>
+                                        <img src="image/sheepf.jpg" alt="sheepf">
+                                    </div>
+                                    <div class="txt">
+                                        <h3>楊桃觀光牧場</h3>
+                                        <p>網頁目的：介紹活動 <br><br>
+                                            主要功能：<br>
+                                            1. 首頁形象頁，監聽滾動，製造視差效果。<br>
+                                            2. infinite loop slider 可以符合螢幕寬度，計算卡片最佳容納個數。<br>
+                                            3. 自動克服回應機器人，使用if...elseif和includes()判斷關鍵字自動回應。
+                                            <br>
+                                            4. 園區介紹-互動地圖，可以讓使用者點擊地點，地圖圖示放大。<br>
+                                            5. 園區介紹-照片燈箱，點擊照片彈出。<br>
+                                            6. 產品分頁-加入收藏使用SVG製作線條小動畫。<br>
+                                            7. 牧場互動-可以翻轉互動卡片(768px以上)。<br>
+                                            8. max-width:768px的NAV為旋轉打開。
+                                        </p>
+                                        <div class="icon">
+                                            <a href="https://kaosheep.github.io/sheepfruit_origin/" target="_blank">
+                                                <p><i class="fa-solid fa-up-right-from-square"></i>網頁</p>
+                                            </a>
+                                            <a href="https://github.com/Kaosheep/sheepfruit_origin" target="_blank">
+                                                <p><i class="fa-brands fa-square-github"></i>github</p>
+                                            </a>
+                                            <a href="https://drive.google.com/file/d/1mbWGPAMAZYjM3oChb--aGk2APQX21WqX/view?usp=drive_link"
+                                                target="_blank">
+                                                <p><i class="fa-solid fa-file-lines"></i>文件</p>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="cardinfo">
-                                    <h3>楊桃觀光牧場</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque obcaecati modi
-                                        expedita vel cupiditate maiores? Distinctio sed adipisci rerum illo maiores aut,
-                                        labore assumenda cumque ullam iure fugiat itaque tempora?</p>
-                                    <div class="icon">
-                                        <a href="https://kaosheep.github.io/sheepfruit_origin/" target="_blank">
-                                            <p><i class="fa-solid fa-up-right-from-square"></i>網頁</p>
-                                        </a>
-                                        <a href="https://github.com/Kaosheep/sheepfruit_origin" target="_blank">
-                                            <p><i class="fa-brands fa-square-github"></i>github</p>
-                                        </a>
-                                        <a href="https://drive.google.com/file/d/1mbWGPAMAZYjM3oChb--aGk2APQX21WqX/view?usp=drive_link"
-                                            target="_blank">
-                                            <p><i class="fa-solid fa-file-lines"></i>文件</p>
-                                        </a>
+                                    <div class="cardimg">
+                                        <img src="image/muse.jpg" alt="muses">
                                     </div>
-                                </div>
-                                <div class="cardinfo" style="display: none;">
-                                    <h3>MUSES 博物館</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque obcaecati modi
-                                        expedita vel cupiditate maiores? Distinctio sed adipisci rerum illo maiores aut,
-                                        labore assumenda cumque ullam iure fugiat itaque tempora?</p>
-                                    <div class="icon">
-                                        <a href="https://tibamef2e.com/chd103/g1/">
-                                            <p><i class="fa-solid fa-up-right-from-square"></i>網頁</p>
-                                        </a>
-                                        <a href="https://github.com/Kaosheep/musesmuseum" target="_blank">
-                                            <p><i class="fa-brands fa-square-github"></i>github</p>
-                                        </a>
-                                        <a href="">
-                                            <p><i class="fa-solid fa-file-lines"></i>文件</p>
-                                        </a>
+                                    <div class="txt">
+                                        <h3>MUSES 博物館</h3>
+                                        <p>網頁目的：介紹活動 <br><br>
+                                            負責部分：<br>
+                                            事前作業：
+                                            1.wireframe設計
+                                            2.usercase
+                                            3.git版本控管
+                                            4.建立專案環境
+                                            5.專案部署
+                                            6.開發文件規範
+                                            7.訂定共用sass及元件
+                                            <br>
+                                            <br>
+                                            一、切版
+                                            <br>
+                                            1.首頁
+                                            2.最新消息
+                                            3.藝術典藏-畫作區
+                                            4.藝術典藏-畫作區詳細頁
+                                            5.藝術典藏-文物區
+                                            6.館內地圖
+                                            7.會員專區-收藏清單
+                                            <br><br>
+                                            二、功能開發
+                                            <br>
+                                            前臺：
+                                            <br>
+                                            1.首頁展覽六邊形slider。 <br>
+                                            2.文物區和館內地圖使用3D素材搭配three.js及Gsap，可旋轉、放大。 <br>
+                                            3.模糊篩選，搜尋功能。<br>
+                                            4.購物車功能以及header小購物車圖示數字跳動功能。 <br>
+                                            5.收藏清單功能，可以加入或移除最愛。 <br>
+                                            6.首頁、最新消息資料串接使用ajax技術。
+                                            <br>
+                                            後臺：
+                                            <br>
+                                            1.撰寫新增、修改、上架、下架、刪除php範本。
+                                            2.最新消息管理。
+                                            3.圖片上傳功能。
+                                        </p>
+                                        <div class="icon">
+                                            <a href="https://tibamef2e.com/chd103/g1/">
+                                                <p><i class="fa-solid fa-up-right-from-square"></i>網頁</p>
+                                            </a>
+                                            <a href="https://github.com/Kaosheep/musesmuseum" target="_blank">
+                                                <p><i class="fa-brands fa-square-github"></i>github</p>
+                                            </a>
+                                            <a href="">
+                                                <p><i class="fa-solid fa-file-lines"></i>文件</p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="procontainer">
-                                
-                                <div class="card">
-                                    <img src="image/sheepf.jpg" alt="sheepf">
-                                </div>
-                                <div class="card">
-                                    <img src="image/muse.jpg" alt="muses">
-                                </div>
-                            </div>
+
 
                         </div>
                     </div>
                 </section>
-                <!-- <section class="contact">
-                    <div class="board">
-                        <h2 class="subtitle">留言給我<br>Contact</h2>
-                        <div class="mes">
-                            <label>大名:<input type="text" /></label>
-                            <label>訊息:<textarea></textarea></label>
-                            <button>送出</button>
-                        </div>
-                    </div>
-                </section> -->
+
             </div>
         </div>
+
     </main>
 
     <script src="js/index.js" type="module"></script>
     <script src="js/shopmove.js" type="module"></script>
     <script src="js/skill.js" type="module"></script>
+    <script src="js/vanilla-tilt.js"></script>
+    <script>
+        // VanillaTilt.init(document.querySelector(".introinfo .block"), {
+        //     max: 15,
+        //     speed: 200,
+        //     perspective: 1000,
+        //     transition: true,
+        // glare: true,
+        // "max-glare": 0.7,
+        // });
+        // VanillaTilt.init(document.querySelector(".introinfo .block"), {
+        //     max: 25,
+        //     speed:300,
+        //     glare: true,
+        //     "max-glare": 0.7,
+        //     transition: true,
+        // });
+
+    </script>
 </body>
 
 </html>
