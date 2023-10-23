@@ -45,3 +45,9 @@ $d: 1350px;
     }
 }
 
+@mixin h() {
+    @media (hover: hover) {
+        @content;
+    }
+}
+

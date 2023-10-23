@@ -10,7 +10,7 @@ const sidelis = document.querySelectorAll('aside ul li');
 
 let section1 = document.querySelector('.intro').offsetHeight;
 let section2 = document.querySelector('.person').offsetHeight;
-let section3 = document.querySelector('.pro').offsetHeight;
+
 
 window.addEventListener('resize', init);
 
@@ -21,21 +21,14 @@ function setTransform(el, transform) {
     el.style.transform = transform;
 }
 function init() {
+    let sliderh = document.querySelector('.sliderinn').getBoundingClientRect().height;
     document.body.style.height = `${sliderh}px`;
 }
 function animate() {
     current = parseFloat(lerp(current, target, ease)).toFixed(2);
     target = window.scrollY;
     setTransform(slider, `translateY(-${current}px)`);
-    sidelis.forEach((li) => {
-        li.addEventListener('click', (e) => {
-            if (e.target == sidelis[1]) {
-                console.log('1');
-                setTransform(slider, `translateY(-${section1}px)`);
 
-            }
-        });
-    });
 
     requestAnimationFrame(animate);
 
@@ -43,7 +36,7 @@ function animate() {
 
 init();
 animate();
-
+//側邊
 const nav = document.querySelector('nav');
 document.addEventListener("wheel", function (e) {
     if (e.deltaY < 0) {
@@ -54,13 +47,15 @@ document.addEventListener("wheel", function (e) {
     }
 });
 
-
 sidelis.forEach((li) => {
     li.addEventListener('click', (e) => {
-        if (e.target == sidelis[1]) {
-            console.log('1');
-            console.log(section1 + section2)
-            slider.style.transform = `translateY(-${section1 + section2}px)`;
+        if (e.target == sidelis[0]) {
+            window.scrollTo(0, 0);
+        } else if (e.target == sidelis[1]) {
+            window.scrollTo(0, section1);
+        } else {
+            window.scrollTo(0, (section1 + section2));
+
         }
 
         sidelis.forEach((item) => {
@@ -72,3 +67,11 @@ sidelis.forEach((li) => {
         });
     });
 });
+//作品集
+let probtns = document.querySelectorAll('.showcase button');
+probtns.forEach((b,i) => {
+    b.addEventListener('click', () => {
+        console.log(i)
+        window.scrollTo(0, (section1 + section2 + (300*(i+1))))
+    })
+})
