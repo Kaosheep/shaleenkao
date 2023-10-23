@@ -86,8 +86,12 @@ nav {
 
 aside {
     position: fixed;
-    top: 60%;
+    bottom:10%;
     z-index: 999;
+
+    @include m() {
+        bottom: 0%;
+    }
 
     ul {
 
@@ -97,7 +101,10 @@ aside {
             color: rgb(86, 156, 214);
             transition: .3s;
             cursor: pointer;
-
+            @include m() {
+            padding: 0.3rem;
+                
+            }
             &:hover {
                 color: rgb(241, 124, 46);
             }

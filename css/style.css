@@ -467,8 +467,13 @@ nav .conicon a p i {
 
 aside {
   position: fixed;
-  top: 60%;
+  bottom: 10%;
   z-index: 999;
+}
+@media screen and (max-width: 414px) {
+  aside {
+    bottom: 0%;
+  }
 }
 aside ul li {
   writing-mode: vertical-lr;
@@ -476,6 +481,11 @@ aside ul li {
   color: rgb(86, 156, 214);
   transition: 0.3s;
   cursor: pointer;
+}
+@media screen and (max-width: 414px) {
+  aside ul li {
+    padding: 0.3rem;
+  }
 }
 aside ul li:hover {
   color: rgb(241, 124, 46);
