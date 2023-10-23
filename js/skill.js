@@ -60,7 +60,7 @@ World.add(world, [Bodies.rectangle(0, 250, 40, 500, {
     }
 })]);
 window.addEventListener('scroll', (e) => {
-    if (document.documentElement.getBoundingClientRect().top < -700) {
+    if (document.documentElement.getBoundingClientRect().top < -600) {
         engine.gravity.y = -1;
         engine.gravity.scale = 0.0005;
     }

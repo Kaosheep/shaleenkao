@@ -84,7 +84,29 @@ nav {
         }
     }
 }
-
+aside{
+    position: fixed;
+    top: 60%;
+    z-index: 999;
+    ul{
+        
+           li{
+            writing-mode: vertical-lr ;
+            padding: 0.5rem;
+            color: rgb(86, 156, 214);
+            transition: .3s;
+            cursor: pointer;
+            &:hover{
+                color: rgb(241, 124, 46);
+            }
+        }
+        li.click{
+            border-right: 4px solid $deblue;
+        } 
+        
+        
+    }
+}
 .backdeco {
     span {
         position: absolute;
@@ -370,7 +392,7 @@ main {
                     border-radius: 20px;
                     border: 5px solid #fff;
                     min-width: 380px;
-
+                    overflow: hidden;
                     @include t() {
                         margin: auto;
                         min-width: 100%;
