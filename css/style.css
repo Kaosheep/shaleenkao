@@ -433,8 +433,7 @@ nav {
 }
 @media screen and (max-width: 414px) {
   nav {
-    border-radius: 0px;
-    background: linear-gradient(0deg, transparent 0%, #ffef95 50%);
+    display: none;
   }
 }
 nav .conicon a {
@@ -615,6 +614,11 @@ main .slider .intro .top .introinfo .block::after {
   transition: 0.3s;
   opacity: 0;
 }
+@media screen and (max-width: 414px) {
+  main .slider .intro .top .introinfo .block::after {
+    font-size: 24px;
+  }
+}
 main .slider .intro .top .introinfo .block:hover::after {
   top: 5%;
   opacity: 0.5;
@@ -622,6 +626,11 @@ main .slider .intro .top .introinfo .block:hover::after {
 @media screen and (max-width: 820px) {
   main .slider .intro .top .introinfo .block:hover::after {
     top: 90%;
+  }
+}
+@media screen and (max-width: 414px) {
+  main .slider .intro .top .introinfo .block:hover::after {
+    top: 45%;
   }
 }
 main .slider .intro .top .introinfo .block:hover .head {
@@ -743,6 +752,12 @@ main .slider .person .container .skillblock {
   border: 5px solid #fff;
   min-width: 380px;
   overflow: hidden;
+}
+@media screen and (max-width: 414px) {
+  main .slider .person .container .skillblock {
+    min-width: 380px;
+    margin: auto;
+  }
 }
 @media screen and (max-width: 820px) {
   main .slider .person .container .skillblock {

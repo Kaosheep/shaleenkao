@@ -41,8 +41,7 @@ nav {
     transition: .3s;
 
     @include m() {
-        border-radius: 0px;
-        background: linear-gradient(0deg, transparent 0%, $subcolor 50%)
+        display: none;
     }
 
     .conicon {
@@ -86,7 +85,7 @@ nav {
 
 aside {
     position: fixed;
-    bottom:10%;
+    bottom: 10%;
     z-index: 999;
 
     @include m() {
@@ -101,10 +100,12 @@ aside {
             color: rgb(86, 156, 214);
             transition: .3s;
             cursor: pointer;
+
             @include m() {
-            padding: 0.3rem;
-                
+                padding: 0.3rem;
+
             }
+
             &:hover {
                 color: rgb(241, 124, 46);
             }
@@ -240,6 +241,11 @@ main {
                             transition: .3s;
                             opacity: 0;
 
+                            @include m() {
+                                font-size: 24px;
+
+                            }
+
                         }
 
                         &:hover {
@@ -249,7 +255,13 @@ main {
 
                                 @include t() {
                                     top: 90%;
+
                                 }
+
+                                @include m() {
+                                    top: 45%;
+                                }
+
 
                             }
 
@@ -405,6 +417,12 @@ main {
                     min-width: 380px;
                     overflow: hidden;
 
+                    @include m() {
+                        min-width: 380px;
+                        margin: auto;
+
+                    }
+
                     @include t() {
                         margin: auto;
                         min-width: 100%;
@@ -424,7 +442,6 @@ main {
 
 
                     .text-to-canvas {
-
                         h1,
                         h2,
                         h3 {
