@@ -28,8 +28,6 @@ function animate() {
     current = parseFloat(lerp(current, target, ease)).toFixed(2);
     target = window.scrollY;
     setTransform(slider, `translateY(-${current}px)`);
-
-
     requestAnimationFrame(animate);
 
 }
@@ -40,7 +38,6 @@ animate();
 const nav = document.querySelector('nav');
 document.addEventListener("wheel", function (e) {
     if (e.deltaY < 0) {
-        console.log()
         nav.style.top = `0%`
     } else {
         nav.style.top = `-100%`
@@ -58,20 +55,51 @@ sidelis.forEach((li) => {
 
         }
 
-        sidelis.forEach((item) => {
-            if (item !== e.target) {
-                item.classList.remove("click");
-            } else {
-                item.classList.toggle("click");
-            }
-        });
+        // sidelis.forEach((item) => {
+        //     if (item !== e.target) {
+        //         item.classList.remove("click");
+        //     } else {
+        //         item.classList.toggle("click");
+        //     }
+        // });
     });
 });
+window.addEventListener('scroll', () => {
+    console.log(window.scrollY);
+    if (window.scrollY > (section1+section2)*0.8) {
+        sidelis.forEach((item) => {
+            if (item == sidelis[2]) {
+                item.classList.add("click");
+            } else {
+                item.classList.remove("click");
+            }
+        });
+    }else if(window.scrollY > (section1 * 0.8)){
+        sidelis.forEach((item) => {
+            if (item == sidelis[1]) {
+                item.classList.add("click");
+            } else {
+                item.classList.remove("click");
+            }
+        });
+    }else{
+        sidelis.forEach((item) => {
+            if (item == sidelis[0]) {
+                item.classList.add("click");
+            } else {
+                item.classList.remove("click");
+            }
+        });
+    }
+})
+
+
+
 //作品集
 let probtns = document.querySelectorAll('.showcase button');
-probtns.forEach((b,i) => {
+probtns.forEach((b, i) => {
     b.addEventListener('click', () => {
         console.log(i)
-        window.scrollTo(0, (section1 + section2 + (300*(i+1))))
+        window.scrollTo(0, (section1 + section2 + (300 * (i + 1))))
     })
 })
