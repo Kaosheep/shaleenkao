@@ -96,10 +96,10 @@ window.addEventListener('scroll', () => {
 
 
 //作品集
+const cardh = document.querySelector('.cardinfo').offsetHeight;
 let probtns = document.querySelectorAll('.showcase button');
 probtns.forEach((b, i) => {
     b.addEventListener('click', () => {
-        console.log(i)
-        window.scrollTo(0, (section1 + section2 + (300 * (i + 1))))
+        window.scrollTo(0, (section1 + section2 + (cardh * (i + 0.5))))
     })
 })
